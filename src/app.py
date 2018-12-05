@@ -13,6 +13,7 @@ from flask_jwt_extended import (
 from resources.user import UserRegister
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
+from resource.auth import Auth
 
 
 app = Flask(__name__)
