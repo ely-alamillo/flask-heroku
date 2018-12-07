@@ -1,3 +1,6 @@
+from flask_restful import Resource
+
+
 class Auth(Resource):
     def post(self):
         if not request.is_json:
