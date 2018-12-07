@@ -1,3 +1,5 @@
+import os
+
 from security import authenticate, identity
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
@@ -18,7 +20,9 @@ from resource.auth import Auth
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
+    "DATABASE_URL", "sqlite:///data.db"
+)
 app.config["JWT_SECRET_KEY"] = "secretkeyboyz"
 api = Api(app)
 
