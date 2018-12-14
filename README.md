@@ -1,5 +1,8 @@
 # Flask Server
 
+# Python
+- This project uses python 3.6.6
+
 # Environment
 
 - This project was built using Miniconda. The environment.yml file has been provided to provision an exact environment if needed.
