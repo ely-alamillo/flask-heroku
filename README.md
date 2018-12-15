@@ -1,7 +1,7 @@
 # Flask Server
 
 # Python
-- This project uses python 3.6.6
+- This project uses python 3.7.1
 
 # Environment
 
