@@ -38,6 +38,7 @@ class Item(Resource):
             )
 
         data = Item.parser.parse_args()
+        item = ItemModel(name, **data)
         item = ItemModel(name, data["price"], data["store_id"])
 
         try:
@@ -73,6 +74,7 @@ class Item(Resource):
 
 class ItemList(Resource):
     def get(self):
-        items = [item.json() for item in ItemModel.query.all()]
+        items = [item.json() for item in ItemModel.find_all()]
+        # items = [item.json() for item in ItemModel.query.all()]
         # items = list(map(lambda x: x.json(), ItemModel.query.all()))
         return {"items": items}
