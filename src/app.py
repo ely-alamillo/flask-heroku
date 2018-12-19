@@ -1,6 +1,6 @@
 import os
 
-from security import authenticate, identity
+from src.security import authenticate, identity
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
 
@@ -12,10 +12,10 @@ from flask_jwt_extended import (
     get_jwt_identity,
 )
 
-from resources.user import UserRegister, User, UserLogin
-from resources.item import Item, ItemList
-from resources.store import Store, StoreList
-from resources.auth import Auth
+from src.resources.user import UserRegister, User, UserLogin
+from src.resources.item import Item, ItemList
+from src.resources.store import Store, StoreList
+from src.resources.auth import Auth
 
 
 app = Flask(__name__)
