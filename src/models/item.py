@@ -5,7 +5,7 @@ class ItemModel(db.Model):
     # sqlalchemy set up
     __tablename__ = "items"
 
-    _id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     price = db.Column(db.Float(precision=2))
 
@@ -19,7 +19,7 @@ class ItemModel(db.Model):
 
     def json(self):
         return {
-            "id": self._id
+            "id": self.id,
             "name": self.name,
             "price": self.price,
             "store_id": self.store_id,

@@ -5,7 +5,7 @@ class StoreModel(db.Model):
     # sqlalchemy set up
     __tablename__ = "stores"
 
-    _id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     # need lazy for speed
     items = db.relationship("ItemModel", lazy="dynamic")
@@ -15,7 +15,7 @@ class StoreModel(db.Model):
 
     def json(self):
         return {
-            'id': self._id
+            "id": self.id,
             "name": self.name,
             # user .all to retrieve from table cause lazy
             "items": [item.json() for item in self.items.all()],

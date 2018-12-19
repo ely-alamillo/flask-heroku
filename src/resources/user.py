@@ -25,3 +25,20 @@ class UserRegister(Resource):
 
         # 201 resource created
         return {"message": "User created successfully."}, 201
+
+
+class User(Resource):
+    @classmethod
+    def get(cls, user_id):
+        user = UserModel.find_by_id(user_id)
+        if not user:
+            return {"message": "User not Found."}, 404
+        return user.json()
+
+    @classmethod
+    def delete(cls, user_id):
+        user = UserModel.find_by_id(user_id)
+        if not user:
+            return {"message": "User not Found."}
+        user.delete_from_db()
+        return {"message": "User deleted."}, 200
