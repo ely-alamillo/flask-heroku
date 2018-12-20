@@ -1,10 +1,7 @@
 import os
 import sys
 
-for p in sys.path:
-    print(p)
-
-from src.security import authenticate, identity
+from security import authenticate, identity
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
 
