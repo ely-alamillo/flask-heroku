@@ -1,4 +1,8 @@
 import os
+import sys
+
+for p in sys.path:
+    print(p)
 
 from src.security import authenticate, identity
 from flask import Flask, request
@@ -12,10 +16,10 @@ from flask_jwt_extended import (
     get_jwt_identity,
 )
 
-from src.resources.user import UserRegister, User, UserLogin
-from src.resources.item import Item, ItemList
-from src.resources.store import Store, StoreList
-from src.resources.auth import Auth
+from resources.user import UserRegister, User, UserLogin
+from resources.item import Item, ItemList
+from resources.store import Store, StoreList
+from resources.auth import Auth
 
 
 app = Flask(__name__)
@@ -35,6 +39,13 @@ def create_tables():
 
 
 jwt = JWTManager(app)
+
+
+@jwt.user_claims_loader
+def add_user_claims(identity):
+    if get_jwt_identity == 1:
+        return {"is_admin": True}
+    return {"is_admin": False}
 
 
 class Auth(Resource):
