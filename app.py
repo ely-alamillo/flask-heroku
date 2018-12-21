@@ -40,7 +40,7 @@ jwt = JWTManager(app)
 
 @jwt.user_claims_loader
 def add_user_claims(identity):
-    if get_jwt_identity == 1:
+    if identity == 1:
         return {"is_admin": True}
     return {"is_admin": False}
 
